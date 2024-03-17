@@ -1,7 +1,6 @@
-import Recipes from "./scripts/models/home/Recipes.js";
-import displayDropdown from "./scripts/pages/home/homePage.js";
+import displayDropdown from "./scripts/display/home/dropdown.js";
+import displayRecipesCards from "./scripts/display/home/recipesCards.js";
 
-const recipes = new Recipes();
-await recipes.getRecipes();
 
 displayDropdown();
+displayRecipesCards();

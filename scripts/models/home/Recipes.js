@@ -1,7 +1,7 @@
 import Api from "../../api/api.js";
 
 export default class Recipes {
-  constructor(url = "./data/recipes.json") {
+  constructor(url = "./data/recipes/recipes.json") {
     this.url = url;
     this.recipes = null;
   }

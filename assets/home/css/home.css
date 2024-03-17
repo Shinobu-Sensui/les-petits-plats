@@ -1,99 +1,136 @@
 header,
 .background {
-    height: 667px;
+  height: 667px;
 }
 
 .background {
-    z-index: -1;
+  z-index: -1;
 }
 
 body {
-    background-color: #EDEDED !important;
+  background-color: #EDEDED !important;
 }
 
 .logo {
-    top: 51px;
-    left: 45px;
+  top: 51px;
+  left: 45px;
 }
 
 .slogan {
-    font-family: "Anton", sans-serif;
-    font-size: clamp(24px, 5vw, 44px);
-    line-height: 66px;
-    letter-spacing: 0em;
-    color: #FFD15B
+  font-family: "Anton", sans-serif;
+  font-size: clamp(24px, 5vw, 44px);
+  line-height: 66px;
+  letter-spacing: 0em;
+  color: #FFD15B
 }
 
 .search-container {
-    position: relative;
-    width: 954px;
-    padding: 20px;
-    height: 72px;
-    border-radius: 11px;
-    margin-top: 20px;
+  position: relative;
+  width: 954px;
+  padding: 20px;
+  height: 72px;
+  border-radius: 11px;
+  margin-top: 20px;
 }
 
 .search-container input {
-    font-size: 16px;
-    position: absolute;
-    padding: 20px;
-    width: 100%;
-    border-radius: 11px;
-    height: 80px;
-    box-sizing: border-box;
-    /* Assure que le padding est inclus dans la hauteur */
+  font-size: 16px;
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  border-radius: 11px;
+  height: 80px;
+  box-sizing: border-box;
+  /* Assure que le padding est inclus dans la hauteur */
 }
 
 .search-icon {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    right: 0;
-    top: 50%;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  right: 0;
+  top: 50%;
 }
 
 
 /* Style du bouton */
 .dropbtn {
-    background-color: #ffffff;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width:174px;
-    border-radius: 11px 11px 0px 0px;
-  }
-  
-  /* Le conteneur <div> - positionné relativement pour permettre le positionnement absolu du contenu déroulant */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Contenu déroulant (caché par défaut) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    width:100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Liens à l'intérieur du contenu déroulant */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    font-size:14px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Affiche le contenu déroulant lors du survol */
-  .dropdown:hover .dropdown-content {
-    display:block;
-  }
-  
-  /* Change la couleur des liens lors du survol */
-  .dropdown-content a:hover {background-color: #ddd}
-  
+  background-color: #ffffff;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 174px;
+  border-radius: 11px 11px 0px 0px;
+}
+
+/* Le conteneur <div> - positionné relativement pour permettre le positionnement absolu du contenu déroulant */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Contenu déroulant (caché par défaut) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Liens à l'intérieur du contenu déroulant */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Affiche le contenu déroulant lors du survol */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change la couleur des liens lors du survol */
+.dropdown-content a:hover {
+  background-color: #ddd
+}
+
+.card {
+  height:800px !important;
+}
+
+.card-body {
+  padding: 0 !important;
+  height: 0 !important;
+}
+
+.ingredients-container,
+.container-recipesCards {
+  display: grid;
+}
+
+.ingredients-container {
+  grid-template-columns: 1fr 1fr;
+}
+
+.container-recipesCards {
+  grid-template-columns: repeat(3, 30%);
+  justify-content: space-between;
+  gap:40px;
+}
+
+.card-img-top {
+  height:40%;
+}
+
+.recipes {
+  padding:50px;
+}
+
+h6 {
+  font-size:16px !important;
+}
