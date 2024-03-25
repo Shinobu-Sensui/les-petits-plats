@@ -1,3 +1,5 @@
+import { dropdownSVG } from "../../svg/home/dropdown.js";
+
 export default class Dropdown {
   constructor(category) {
     this.category = category;
@@ -6,16 +8,12 @@ export default class Dropdown {
   createDropDown() {
     return `
     <div class="dropdown" data-category="${this.category.idName}">
-      <button type="button" class="dropbtn">${this.category.recipeName}</button>
+      <button type="button" class="dropbtn">${this.category.recipeName}
+        <span class="dropdownSVG"> ${dropdownSVG()}</span>
+      </button>
+      
+      
     </div>
     `;
   }
-}
-
-{
-  /* <div class="dropdown-content">
-<a href="#">Lien 1</a>
-<a href="#">Lien 2</a>
-<a href="#">Lien 3</a>
-</div> */
 }

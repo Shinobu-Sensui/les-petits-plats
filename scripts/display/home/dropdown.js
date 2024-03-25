@@ -1,3 +1,4 @@
+import showRecipesNb from "../../function/recipesCount.js";
 import Categories from "../../models/home/Categories.js";
 import Dropdown from "../../templates/home/Dropdown.js";
 
@@ -14,6 +15,9 @@ const displayDropdown = () => {
     containerDropdown.innerHTML += categoryHTML;
   });
 
+  const countRecipesElement = document.createElement("div");
+  countRecipesElement.classList.add("countRecipe");
+  containerDropdown.appendChild(countRecipesElement);
   recipes_DOM.appendChild(containerDropdown);
 };
 
