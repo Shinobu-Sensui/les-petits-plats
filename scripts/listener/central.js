@@ -1,5 +1,10 @@
-import search from "./home/search.js";
+import handleDropdownButtonClick from "./home/handleDropdownButtonClick.js";
+import handleSearchCategoriesKeyup from "./home/handleSearchCategoriesKeyup.js";
+import { searchListener, getResponseSearch } from "./home/handleSearchClick.js";
 
-export const loadListener = (data) => {
-  search.searchListener(data);
+
+export const loadListener = (data, dataCategoriesElements) => {
+  searchListener(data);
+  handleDropdownButtonClick();
+  handleSearchCategoriesKeyup(dataCategoriesElements);
 };

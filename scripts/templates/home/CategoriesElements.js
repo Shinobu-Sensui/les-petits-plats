@@ -1,44 +1,55 @@
+import createElement from "../../function/dom/createElement.js";
+import handleCategoryElementClick from "../../listener/home/handleCategoryElementClick.js";
+
 export default class CategoriesElements {
   constructor() {}
 
-  createElement(tag, properties = {}) {
-    const element = document.createElement(tag);
-    Object.entries(properties).forEach(([key, value]) => {
-      if (key === "classList") {
-        if (Array.isArray(value)) {
-          value.forEach((className) => element.classList.add(className));
-        } else {
-          element.classList.add(value);
-        }
-      } else {
-        element[key] = value;
-      }
+  addNode(parent, value) {
+    const item = createElement("div", {
+      innerText: value,
+      classList: ["category-item"],
     });
-    return element;
+    parent.appendChild(item);
+    handleCategoryElementClick(item, value);
+  }
+
+  pushInCategory(data) {
+    Object.entries(data).forEach(([category, elements]) => {
+      const container = document
+        .querySelector(`[data-category="${category}"]`)
+        .querySelector(".container-categories");
+      if (!container) return;
+      elements.forEach((element) => {
+        this.addNode(container, element);
+      });
+    });
   }
 
   createCategoriesElements(categoriesElements) {
     Object.entries(categoriesElements).forEach(([categorie, elements]) => {
       const btn = document.querySelector(`[data-category="${categorie}"]`);
-      if (!btn) {
-        console.warn(`Button not found for category: ${categorie}`);
-        return;
-      }
-      const dropdownContent = this.createElement("div", {
-        classList: "dropdown-content",
+      if (!btn) return;
+
+      const dropdownContent = createElement("div", {
+        classList: ["dropdown-content"],
       });
 
-      const dropdownSearch = this.createElement("input", {
+      const dropdownSearch = createElement("input", {
         classList: "dropdownSearch",
-        type:"search"
+        type: "search",
       });
 
       dropdownContent.appendChild(dropdownSearch);
 
-      elements.forEach((element) => {
-        const linkElement = this.createElement("a", { innerText: element });
-        dropdownContent.appendChild(linkElement);
+      const containerCategoriesElements = createElement("div", {
+        classList: "container-categories",
       });
+
+      elements.forEach((element) =>
+        this.addNode(containerCategoriesElements, element)
+      );
+
+      dropdownContent.appendChild(containerCategoriesElements);
 
       btn.appendChild(dropdownContent);
     });

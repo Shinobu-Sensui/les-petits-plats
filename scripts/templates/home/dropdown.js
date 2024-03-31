@@ -11,8 +11,6 @@ export default class Dropdown {
       <button type="button" class="dropbtn">${this.category.recipeName}
         <span class="dropdownSVG"> ${dropdownSVG()}</span>
       </button>
-      
-      
     </div>
     `;
   }

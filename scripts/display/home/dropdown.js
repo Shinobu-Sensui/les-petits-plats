@@ -1,4 +1,3 @@
-import showRecipesNb from "../../function/recipesCount.js";
 import Categories from "../../models/home/Categories.js";
 import Dropdown from "../../templates/home/Dropdown.js";
 

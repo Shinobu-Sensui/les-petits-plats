@@ -8,5 +8,6 @@ export default class Recipe {
         this.description = recipe.description
         this.appliance = recipe.appliance
         this.ustensils = recipe.ustensils
+        this.time = recipe.time
     }
 }
