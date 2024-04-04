@@ -1,5 +1,6 @@
 import createElement from "../../function/dom/createElement.js";
 import handleCategoryElementClick from "../../listener/home/handleCategoryElementClick.js";
+import svgSearchCategoryElement from "../../svg/home/searchCategoryElement.js";
 
 export default class CategoriesElements {
   constructor() {}
@@ -11,6 +12,32 @@ export default class CategoriesElements {
     });
     parent.appendChild(item);
     handleCategoryElementClick(item, value);
+  }
+
+  createSearchWithIcon() {
+    // Créer un conteneur pour l'input et l'icône
+    const searchContainer = createElement("div", {
+      classList: ["container-search-category"],
+    });
+
+    // Créer l'input de recherche
+    const dropdownSearch = createElement("input", {
+      classList: "dropdownSearch",
+      type: "search",
+    });
+
+    // Obtenir l'icône SVG comme élément DOM (assurez-vous que svgSearchCategoryElement retourne un élément DOM)
+    const searchCategoryIcon = createElement("div", {
+      classList: "searchCategoryIcon",
+    });
+
+    searchCategoryIcon.innerHTML = svgSearchCategoryElement();
+
+    // Ajouter l'input et l'icône au conteneur
+    searchContainer.appendChild(dropdownSearch);
+    searchContainer.appendChild(searchCategoryIcon);
+
+    return searchContainer;
   }
 
   pushInCategory(data) {
@@ -34,12 +61,10 @@ export default class CategoriesElements {
         classList: ["dropdown-content"],
       });
 
-      const dropdownSearch = createElement("input", {
-        classList: "dropdownSearch",
-        type: "search",
-      });
+      // Créer le conteneur de recherche qui inclut l'input et l'icône SVG
+      const searchWithIcon = this.createSearchWithIcon();
 
-      dropdownContent.appendChild(dropdownSearch);
+      dropdownContent.appendChild(searchWithIcon);
 
       const containerCategoriesElements = createElement("div", {
         classList: "container-categories",

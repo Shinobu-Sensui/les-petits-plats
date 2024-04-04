@@ -43,16 +43,21 @@ export default class RecipesCard {
 
   createIngredientsList(ingredients) {
     const container = document.createElement("div");
-    container.classList.add("ingredients-container");
+    container.classList.add("container-global-ingredients");
 
     const ingredientCategory = document.createElement("h6");
     ingredientCategory.classList.add("category");
     ingredientCategory.textContent = "INGRÉDIENTS";
     container.appendChild(ingredientCategory);
+    
+    //const constainer
+
+    const containerIngredients = document.createElement('div') 
+    containerIngredients.classList.add('container-ingredients')
 
     ingredients.forEach((ingredient) => {
       const ingredientDiv = document.createElement("div");
-      ingredientDiv.classList.add("ingredient-container");
+      ingredientDiv.classList.add("container-ingredient");
 
       const title = document.createElement("div");
       title.classList.add("ingredient-title");
@@ -62,12 +67,13 @@ export default class RecipesCard {
       quantity.classList.add("ingredient-quantity");
 
       const isIngredientUnit = ingredient.unit ? ingredient.unit : "";
-      quantity.textContent = `${ingredient.quantity} ${isIngredientUnit}`;
+      quantity.textContent = `${ingredient.quantity ? ingredient.quantity : ''} ${isIngredientUnit}`;
       ingredientDiv.appendChild(title);
       ingredientDiv.appendChild(quantity);
-      container.appendChild(ingredientDiv);
+      containerIngredients.appendChild(ingredientDiv);
     });
 
+    container.appendChild(containerIngredients)
     return container;
   }
 

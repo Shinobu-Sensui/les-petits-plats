@@ -1,14 +1,14 @@
-import showRecipesNb from "../../function/recipesCount.js";
+import { domRecipesCount } from "../../function/recipesCount.js";
 import Recipe from "../../models/home/Recipe.js";
 import RecipesCard from "../../templates/home/RecipesCard.js";
-
 
 const containerRecipesCards = document.createElement("div");
 const recipes_DOM = document.querySelector(".recipes");
 
 containerRecipesCards.classList.add("container-recipesCards");
 
-const displayRecipesCards = async (recipes) => {
+const displayRecipesCards = async (recipes, origin) => {
+  console.log(origin)
   recipes.forEach((recipeData) => {
     const recipe = new Recipe(recipeData);
     const recipeCard = new RecipesCard(recipe).createRecipeCard();
@@ -16,7 +16,7 @@ const displayRecipesCards = async (recipes) => {
   });
 
   recipes_DOM.appendChild(containerRecipesCards);
-  showRecipesNb(recipes.length)
+  domRecipesCount(recipes.length, origin);
 };
 
 export default displayRecipesCards;

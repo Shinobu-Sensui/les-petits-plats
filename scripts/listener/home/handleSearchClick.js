@@ -1,10 +1,16 @@
 import displayRecipesCards from "../../display/home/recipesCards.js";
 import { addCategoriesElements } from "../../function/categoriesElements.js";
-import { findRecipesAndIngredients } from "../../function/Search.js";
+import {
+  findRecipesAndIngredients,
+  findRecipesAndIngredientsFilter,
+} from "../../function/mainBarSearch.js";
 import CategoriesElements from "../../templates/home/CategoriesElements.js";
 
 let responseSearch = null;
+let currentSearch = null;
+
 const searchListener = (data) => {
+  if (!currentSearch) currentSearch = data;
   const searchIcon = document.querySelector(".search-icon");
   const categoriesElements = new CategoriesElements();
   if (!responseSearch) responseSearch = addCategoriesElements(data);
@@ -17,20 +23,23 @@ const searchListener = (data) => {
 
       element.innerHTML = "";
     });
-    document.querySelector(".container-recipesCards").innerHTML = "";
+    const containerRecipesCards = document.querySelector(
+      ".container-recipesCards"
+    );
+    containerRecipesCards.innerHTML = "";
     const dataMatched = findRecipesAndIngredients(data, value);
-    displayRecipesCards(dataMatched);
+    const dataMatchedFilter = findRecipesAndIngredientsFilter(data, value);
+
+    displayRecipesCards(dataMatched, { origin: "mainBarSearch", value });
     const elementsMatched = addCategoriesElements(dataMatched);
     categoriesElements.pushInCategory(elementsMatched);
+    currentSearch = dataMatched;
     responseSearch = elementsMatched;
   });
 };
 
-const handleDelete = () => {
-  console.log("supprime!");
-};
+const handleDelete = () => true;
+const getResponseSearch = () => responseSearch;
+const getCurrentSearch = () => currentSearch;
 
-const getResponseSearch = () => {
-  return responseSearch;
-};
-export { searchListener, getResponseSearch };
+export { searchListener, getResponseSearch, getCurrentSearch };

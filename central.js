@@ -9,6 +9,6 @@ const recipes = await new Recipes().getRecipes();
 
 displayDropdown(recipes.length);
 const dataCategoriesElements = displayCategoriesElements(recipes);
-displayRecipesCards(recipes);
-displayTag()
+displayRecipesCards(recipes, { origin: "started" });
+displayTag();
 loadListener(recipes, dataCategoriesElements);

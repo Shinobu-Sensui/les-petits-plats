@@ -7,9 +7,9 @@ const handleSearchCategoriesKeyup = (dataCategories) => {
   const categoriesElementsInstance = new CategoriesElements();
   dropdownSearch.forEach((element) => {
     element.addEventListener("keyup", (e) => {
-      const responseSearch = getResponseSearch(); // Obtenir la valeur actuelle de responseSearch
+      const responseSearch = getResponseSearch(); 
       let { value } = e.target;
-      const grandParentElement = element.parentElement.parentElement;
+      const grandParentElement = element.parentElement.parentElement.parentElement;
       const categoryTarget = grandParentElement.getAttribute("data-category");
       const dataCategory = responseSearch
         ? responseSearch[categoryTarget]
