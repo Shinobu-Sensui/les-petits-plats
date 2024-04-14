@@ -1,15 +1,16 @@
 import { filterCategoriesElements } from "../../function/categoriesElements.js";
 import CategoriesElements from "../../templates/home/CategoriesElements.js";
-import { getResponseSearch } from "./handleSearchClick.js";
+import { getResponseSearch } from "./handleSearchKeyup.js";
 
 const handleSearchCategoriesKeyup = (dataCategories) => {
   const dropdownSearch = document.querySelectorAll(".dropdownSearch");
   const categoriesElementsInstance = new CategoriesElements();
   dropdownSearch.forEach((element) => {
     element.addEventListener("keyup", (e) => {
-      const responseSearch = getResponseSearch(); 
+      const responseSearch = getResponseSearch();
       let { value } = e.target;
-      const grandParentElement = element.parentElement.parentElement.parentElement;
+      const grandParentElement =
+        element.parentElement.parentElement.parentElement;
       const categoryTarget = grandParentElement.getAttribute("data-category");
       const dataCategory = responseSearch
         ? responseSearch[categoryTarget]

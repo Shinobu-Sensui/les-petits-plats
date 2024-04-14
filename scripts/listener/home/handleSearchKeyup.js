@@ -3,6 +3,7 @@ import { addCategoriesElements } from "../../function/categoriesElements.js";
 import {
   findRecipesAndIngredients,
   findRecipesAndIngredientsFilter,
+  findRecipesAndIngredientsFor,
 } from "../../function/mainBarSearch.js";
 import CategoriesElements from "../../templates/home/CategoriesElements.js";
 
@@ -11,11 +12,12 @@ let currentSearch = null;
 
 const searchListener = (data) => {
   if (!currentSearch) currentSearch = data;
-  const searchIcon = document.querySelector(".search-icon");
+  const search = document.querySelector(".search");
   const categoriesElements = new CategoriesElements();
   if (!responseSearch) responseSearch = addCategoriesElements(data);
-  searchIcon.addEventListener("click", (e) => {
+  search.addEventListener("keyup", (e) => {
     let value = document.querySelector(".search").value.toLowerCase();
+    if (value.length < 3 & value !== "") return
     document.querySelectorAll(".container-categories").forEach((element) => {
       element.querySelectorAll("*").forEach((childElement) => {
         childElement.removeEventListener("click", handleDelete);
@@ -28,8 +30,6 @@ const searchListener = (data) => {
     );
     containerRecipesCards.innerHTML = "";
     const dataMatched = findRecipesAndIngredients(data, value);
-    const dataMatchedFilter = findRecipesAndIngredientsFilter(data, value);
-
     displayRecipesCards(dataMatched, { origin: "mainBarSearch", value });
     const elementsMatched = addCategoriesElements(dataMatched);
     categoriesElements.pushInCategory(elementsMatched);

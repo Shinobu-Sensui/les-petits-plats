@@ -15,6 +15,7 @@ const handleCategoryElementDeleteClick = ({
     element.removeChild(elementSVG);
     tagElement.remove();
     tagSelected.delete(value);
+    document.querySelector('.container-recipesCards').innerHTML = "";
     const dataTagsMatched = findRecipesByTags(currentSearch, tagSelected);
     displayRecipesCards(dataTagsMatched, "tag");
     element.style.fontWeight = "";

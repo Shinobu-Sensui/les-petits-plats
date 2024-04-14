@@ -5,10 +5,11 @@ import displayCategoriesElements from "./scripts/display/home/categoriesElements
 import { loadListener } from "./scripts/listener/central.js";
 import displayTag from "./scripts/display/home/tags.js";
 
-const recipes = await new Recipes().getRecipes();
-
-displayDropdown(recipes.length);
-const dataCategoriesElements = displayCategoriesElements(recipes);
-displayRecipesCards(recipes, { origin: "started" });
-displayTag();
-loadListener(recipes, dataCategoriesElements);
+document.addEventListener("DOMContentLoaded", async () => {
+  const recipes = await new Recipes().getRecipes();
+  displayDropdown(recipes.length);
+  const dataCategoriesElements = displayCategoriesElements(recipes);
+  displayRecipesCards(recipes, { origin: "started" });
+  displayTag();
+  loadListener(recipes, dataCategoriesElements);
+});

@@ -1,25 +1,28 @@
-export const domRecipesCount = (nb, { origin, value }) => {
-  const containerRecipesCards = document.querySelector(".container-recipesCards");
 
-  const countElement = document.querySelector(".countRecipe");
-  if (!countElement) return;
-  const plural = nb > 1 ? "s" : "";
-  console.log(containerRecipesCards);
-  countElement.innerText = `${nb} recette${plural}`;
-  if (nb === 0) {
-    let message = [];
-    document.querySelector(".search").value = "";
-    if (origin === "tag") {
-      message.push(`à la selection de vos tags`);
-    }
+export const updateRecipesDisplay = (numberOfRecipes, searchContext) => {
+  const recipesContainer = document.querySelector(".container-recipesCards");
+  const recipesCountElement = document.querySelector(".countRecipe");
 
-    if (value) {
-      message.push(`à votre recherche ${value.italics()}`);
-    }
-    return (containerRecipesCards.innerHTML = `<div class='recipeNotFound'> Aucune recette ne correspond ${message.join(
-      ", "
-    )}.</div>`);
+  if (!recipesCountElement) return;
+
+  updateRecipesCount(recipesCountElement, numberOfRecipes);
+  if (numberOfRecipes === 0) {
+    showNoRecipesFoundMessage(recipesContainer, searchContext);
   }
+};
 
-  return countElement;
+const updateRecipesCount = (element, count) => {
+  const recipeWord = count > 1 ? "recettes" : "recette";
+  element.innerText = `${count} ${recipeWord}`;
+};
+
+
+const showNoRecipesFoundMessage = (container, { origin, value }) => {
+  let messages = [];
+  document.querySelector(".search").value = "";
+  if (origin === "tag") messages.push("à la sélection de vos tags");
+  if (value) messages.push(`à votre recherche "${value}"`);
+
+  const combinedMessage = messages.join(", ");
+  container.innerHTML = `<div class='recipeNotFound'>Aucune recette ne correspond ${combinedMessage}.</div>`;
 };

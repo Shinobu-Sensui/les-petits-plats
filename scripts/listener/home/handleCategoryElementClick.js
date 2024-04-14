@@ -1,5 +1,5 @@
 import Tags from "../../templates/home/Tags.js";
-import { getCurrentSearch } from "./handleSearchClick.js";
+import { getCurrentSearch } from "./handleSearchKeyup.js";
 import deleteCategoryElementSVG from "../../svg/home/deleteCategoryElement.js";
 import handleTagDeleteClick from "./handleTagDeleteClick.js";
 import handleCategoryElementDeleteClick from "./handleCategoryElementDeleteClick.js";
@@ -23,6 +23,8 @@ const handleCategoryElementClick = (element, value) => {
       const tagElement = tags.createTagElement(value);
       const currentSearch = getCurrentSearch();
       const dataTagsMatched = findRecipesByTags(currentSearch, tagSelected);
+
+      document.querySelector('.container-recipesCards').innerHTML = ""
       displayRecipesCards(dataTagsMatched, { origin: "tag" });
 
       Object.assign(element.style, tagStyleSelected);

@@ -9,6 +9,8 @@ export default class RecipesCard {
     img.classList.add("card-img-top");
     img.src = `${this.imgPath}/${this.recipe.img}`;
     img.alt = "Card image cap";
+    img.setAttribute('loading', 'lazy');
+
     return img;
   }
 

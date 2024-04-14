@@ -1,6 +1,5 @@
 export const findRecipesByTags = (recipes, selectedTags) => {
   selectedTags = [...selectedTags];
-  console.log(selectedTags)
   return recipes.reduce((matchingRecipes, recipe) => {
     const { ingredients, ustensils, appliance } = recipe;
 
@@ -12,7 +11,6 @@ export const findRecipesByTags = (recipes, selectedTags) => {
 
     const isMatch = selectedTags.every((tag) => recipeItems.includes(tag));
     if (isMatch) matchingRecipes.push(recipe);
-
     return matchingRecipes;
   }, []);
 };
