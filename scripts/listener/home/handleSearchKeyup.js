@@ -1,8 +1,6 @@
 import displayRecipesCards from "../../display/home/recipesCards.js";
 import { addCategoriesElements } from "../../function/categoriesElements.js";
 import {
-  findRecipesAndIngredients,
-  findRecipesAndIngredientsFilter,
   findRecipesAndIngredientsFor,
 } from "../../function/mainBarSearch.js";
 import CategoriesElements from "../../templates/home/CategoriesElements.js";
@@ -29,7 +27,7 @@ const searchListener = (data) => {
       ".container-recipesCards"
     );
     containerRecipesCards.innerHTML = "";
-    const dataMatched = findRecipesAndIngredients(data, value);
+    const dataMatched = findRecipesAndIngredientsFor(data, value);
     displayRecipesCards(dataMatched, { origin: "mainBarSearch", value });
     const elementsMatched = addCategoriesElements(dataMatched);
     categoriesElements.pushInCategory(elementsMatched);
