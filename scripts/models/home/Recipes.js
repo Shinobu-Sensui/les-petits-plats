@@ -1,4 +1,4 @@
-import Api from "../../api/api.js";
+import Api from "../../api/Api.js";
 
 export default class Recipes {
   constructor(url = "./data/recipes/recipes.json") {
