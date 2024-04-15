@@ -337,10 +337,6 @@ h6 {
   padding: 20px 0px 20px 0px;
 }
 
-.tag svg {
-  stroke: 25px;
-}
-
 .recipeNotFound {
   font-style: italic;
   font-size: 18px;
